@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
 @XmlRootElement
 public class Tone {
 	public List<Boolean> tone;

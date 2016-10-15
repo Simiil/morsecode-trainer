@@ -1,7 +1,6 @@
 package de.hsrm.hktn.morsecodetrainer.model;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;

@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
-import de.hsrm.hktn.morsecodetrainer.model.Tone;
 import de.hsrm.hktn.morsecodetrainer.model.ToneChallenge;
 
 public class ToneChallengeRegistry {

@@ -2,7 +2,6 @@ package de.hsrm.hktn.morsecodetrainer.api.morse;
 
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
@@ -10,24 +9,17 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
 import de.hsrm.hktn.morsecodetrainer.model.Acknowledgement;
-import de.hsrm.hktn.morsecodetrainer.model.Tone;
 import de.hsrm.hktn.morsecodetrainer.model.ToneChallenge;
 import de.hsrm.hktn.morsecodetrainer.model.ToneResponse;
 import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
-import de.hsrm.hktn.morsecodetrainer.persistence.Util;
 
 @Path("morse/game/gettone")
 public class GameTone {
-	
-	@Context
-	HttpServletRequest request;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

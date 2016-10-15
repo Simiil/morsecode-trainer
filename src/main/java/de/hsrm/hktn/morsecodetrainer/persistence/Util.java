@@ -2,7 +2,6 @@ package de.hsrm.hktn.morsecodetrainer.persistence;
 
 import java.util.HashMap;
 import java.util.Random;
-import java.util.Set;
 
 import de.hsrm.hktn.morsecodetrainer.model.Tone;
 
