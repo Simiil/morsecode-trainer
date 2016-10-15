@@ -27,9 +27,9 @@ ITU Morsecode
 JS Datatype of morsecode characters:
 
 ```javascript
-var x = {
-        a: ".-",
-        b: "-...",
+var itu = {
+        A: ".-",
+        B: "-...",
         ...
     };
 ```
