@@ -6,6 +6,7 @@ angular.module('morsecodeTrainer', [
   'morsecodeTrainer.view1',
   'morsecodeTrainer.view2',
   'morsecodeTrainer.auth',
+  'morsecodeTrainer.trainer'
   // 'morsecodeTrainer.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
