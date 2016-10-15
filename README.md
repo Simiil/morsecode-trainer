@@ -39,15 +39,27 @@ var itu = {
 ### Set up node.js Server
 
 * Get [npm](https://www.npmjs.com/get-npm)
-* Go to ***`angular-morsecode-trainer/`*** 
+* Go to ***`angular-morsecode-trainer/`***
 * Type `npm install`
 * Type `npm start`
 
-##Backend
+## Backend
 
-Run the backend with 
+Run the backend with
 
     mvn clean install
     mvn tomcat7:run
 
 the site should run at localhost:9090
+
+## Contributors
+
+* Kalle Hilsenbek
+* Johannes Höß
+* Jan Klaas
+* Samuel Leisering
+* Gregor Volkmann
+
+## License
+
+TODO
