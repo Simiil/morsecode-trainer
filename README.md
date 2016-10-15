@@ -7,7 +7,6 @@ A trainer for absolute beginners in morsecode who want to lerne the morse alphab
 
 ITU Morsecode
 
-
 ## Frontend
 
 ### Mockups
@@ -22,7 +21,7 @@ ITU Morsecode
 
 ![Mockup UI Mobile v1.1 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-mobile-v1.1.jpg)
 
-### Conventions
+## Conventions
 
 JS Datatype of morsecode characters:
 
@@ -34,9 +33,7 @@ var itu = {
     };
 ```
 
-
-
-### Set up node.js Server
+## Set up node.js Server
 
 * Get [npm](https://www.npmjs.com/get-npm)
 * Go to ***`angular-morsecode-trainer/`***
@@ -44,6 +41,8 @@ var itu = {
 * Type `npm start`
 
 ## Backend
+
+Runs on Tomcat.
 
 Run the backend with
 
