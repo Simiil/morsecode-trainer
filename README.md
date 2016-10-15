@@ -33,3 +33,12 @@ var x = {
         ...
     };
 ```
+
+
+
+### Set up node.js Server
+
+* Get [npm](https://www.npmjs.com/get-npm)
+* Go to ***`angular-morsecode-trainer/`*** 
+* Type `npm install`
+* Type `npm start`
