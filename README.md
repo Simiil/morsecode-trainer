@@ -20,7 +20,7 @@ ITU Morsecode
 
 ![Mockup UI Desktop v1.1 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-desktop-v1.1.jpg)
 
-![Mockup UI Mobile v1.1 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/mockups/MorseCodeTrainer-Mockup-mobile-v1.1.jpg)
+![Mockup UI Mobile v1.1 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-mobile-v1.1.jpg)
 
 ### Conventions
 
