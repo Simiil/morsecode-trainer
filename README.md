@@ -42,3 +42,12 @@ var itu = {
 * Go to ***`angular-morsecode-trainer/`*** 
 * Type `npm install`
 * Type `npm start`
+
+##Backend
+
+Run the backend with 
+
+    mvn clean install
+    mvn tomcat7:run
+
+the site should run at localhost:9090
