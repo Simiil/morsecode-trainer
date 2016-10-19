@@ -15,21 +15,18 @@
                     <h1 class="text-center">MorseCodeTrainer</h1>
                 </div>
                 <div class="col-md-12">
-                    <h1 class="text-center">X X X X X</h1>
+                    <h1 id="challenge" class="text-center">{{challenge}}</h1>
                 </div>
                 <div class="col-md-12">
-                    <h1 class="text-center">KEYBOARD</h1>
+                    <h1 id="keyboard" class="text-center">KEYBOARD</h1>
+                    <button ng-click='setChallenge("S")'>S</button>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <h2>CheatSheet</h2>
             <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item" ng-repeat="(key, value) in itu">{{key}} = {{value}}</li>
             </ul>
         </div>
     </div>

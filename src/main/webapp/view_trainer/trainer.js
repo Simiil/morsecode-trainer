@@ -10,10 +10,48 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
 }])
 
 .controller('TrainerCtrl', ['$scope', function($scope) {
-    $scope.greet = "thats the angular BEGIN";
-    $scope.username = 'World';
+  $scope.challenge = '---';
+  $scope.itu = {
+    A: ".-",
+    B: "-...",
+    C: "-.-.",
+    D: "-..",
+    E: ".",
+    F: "..-.",
+    G: "--.",
+    H: "....",
+    I: "..",
+    J: ".---",
+    K: "-.-",
+    L: ".-..",
+    M: "--",
+    N: "-.",
+    O: "---",
+    P: ".--.",
+    Q: "--.-",
+    R: ".-.",
+    S: "...",
+    T: "-",
+    U: "..-",
+    V: "...-",
+    W: ".--",
+    X: "-..-",
+    Y: "-.--",
+    Z: "--..",
 
-    $scope.sayHello = function() {
-        $scope.greeting = 'Hello ' + $scope.username + '!';
+    1: ".----",
+    2: "..---",
+    3: "...--",
+    4: "....-",
+    5: ".....",
+    6: "-....",
+    7: "--...",
+    8: "---..",
+    9: "----.",
+    0: "-----",
+  };
+
+  $scope.setChallenge = function(letter) {
+    $scope.challenge = $scope.itu[letter];
   };
 }]);
