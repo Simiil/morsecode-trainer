@@ -18,8 +18,11 @@
                     <h1 id="challenge" class="text-center">{{challenge}}</h1>
                 </div>
                 <div class="col-md-12">
-                    <h1 id="keyboard" class="text-center">KEYBOARD</h1>
-                    <button ng-click='setChallenge("S")'>S</button>
+                    <div class="row">
+                        <div class="col-md-1" ng-repeat="(key, value) in alphabet">
+                            <button ng-click="setChallenge(key)">{{key}}</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

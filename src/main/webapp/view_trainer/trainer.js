@@ -50,6 +50,7 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     9: "----.",
     0: "-----",
   };
+  $scope.alphabet = $scope.itu;
 
   $scope.setChallenge = function(letter) {
     $scope.challenge = $scope.itu[letter];
