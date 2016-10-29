@@ -130,5 +130,5 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
                 console.log("hier wurden daten abgefragt!");
           });
       };
-      $scope.onInit();
+    //   $scope.onInit();
 }]);
