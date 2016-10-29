@@ -82,15 +82,11 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     $scope.getChallenge = function() {
         $http.get("/api/morse/game/gettone/foo").then(function(response) {
             $scope.aktChallenge = response.data;
-            console.log($scope.aktChallenge);
-            console.log($scope.aktChallenge.character.tone[0].toString());
-            console.log("false");
             return $scope.aktChallenge.character.tone[0].toString();
         });
     }
 
     $scope.putChallenge = function(character) {
-
         var req = {
             method: 'PUT',
             url: '/api/morse/game/gettone/foo',
@@ -104,11 +100,8 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
         }
 
         var responseData;
-
         $http(req).then(function(response) {
-            console.log("Sending Successful");
             responseData = response.data;
-            console.log(responseData);
             return responseData;
         });
     }
@@ -120,11 +113,7 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     };
 
     $scope.onInit = function() {
-        $scope.challenge = $scope.getChallenge();
-        //   $scope.challenge = "$scope.getChalleng";
-        //   $scope.getChallenge().then(function(response){
-        //         console.log("hier wurden daten abgefragt!");
-        //   });
+        $scope.challenge = "---";
     };
 
     $scope.onInit();
