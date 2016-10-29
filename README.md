@@ -1,4 +1,4 @@
-# Morsecode Trainer ![travis build](https://travis-ci.org/Simiil/morsecode-trainer.svg?branch=master)
+# Morsecode Trainer [![Build Status](https://travis-ci.org/Simiil/morsecode-trainer.svg?branch=master)](https://travis-ci.org/Simiil/morsecode-trainer)
 
 ## Overview
 A trainer for absolute beginners in morsecode who want to lerne the morse alphabet.
