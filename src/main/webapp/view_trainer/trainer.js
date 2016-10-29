@@ -97,13 +97,16 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     $scope.getChallenge = function() {
         $http.get("/api/morse/game/gettone/foo").then(function(response) {
             $scope.challengeData = response.data;
-            console.log($scope.challengeData);
             $scope.challenge = challengeDataToCode($scope.challengeData);
             return $scope.challengeData.character.tone[0].toString();
         });
     }
 
-    $scope.putChallenge = function(character) {
+    $scope.answerStatus = function(status) {
+        $scope.answerStatusColor = (status == true ? "#CCFFCC" : "#FFCCCC");
+    }
+
+    $scope.answerChallenge = function(character) {
         var req = {
             method: 'PUT',
             url: '/api/morse/game/gettone/foo',
@@ -116,28 +119,19 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
             }
         }
 
-        var responseData;
         $http(req).then(function(response) {
-            responseData = response.data;
-            return responseData;
+            console.log(response);
+            $scope.answerStatus(response.data.content);
+            $scope.getChallenge();
         });
     }
 
-    $scope.setChallenge = function(letter) {
-        $scope.lastChallenge = $scope.putChallenge(letter);
-        $scope.challenge = $scope.itu[letter] + $scope.lastChallenge;
-        $scope.getChallenge();
-    };
-
     $scope.onInit = function() {
+        $scope.answerStatusColor = "transparent";
         $scope.getChallenge();
     };
 
     $scope.onInit();
-
-    $scope.setChallenge = function(letter) {
-        $scope.challenge = $scope.itu[letter];
-    };
 
     $scope.setCode = function(key) {
         $scope.dropDownCodeActive = $scope.dropDownMenus["code"][key];
