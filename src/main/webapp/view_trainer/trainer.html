@@ -2,7 +2,18 @@
     <div class="row">
         <div class="col-md-1">
             <div class="btn-group-vertical">
-                <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i></button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Statistik</a></li>
+                        <li><a href="#">About</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
                 <button type="button" class="btn btn-primary btn-toggleable" ng-click="btnVolume.status = !btnVolume.status"><i ng-class="{true:'fa fa-volume-up', false:'fa fa-volume-off'}[!btnVolume.status]"></i></button>
                 <button type="button" class="btn btn-primary btn-toggleable" ng-click="btnEye.status = !btnEye.status"><i ng-class="{true:'fa fa-eye', false:'fa fa-eye-slash'}[!btnEye.status]"></i></button>
                 <div class="btn-group">
