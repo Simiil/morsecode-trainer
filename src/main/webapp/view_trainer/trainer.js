@@ -59,11 +59,6 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
           "Morse": "Morse",
           "Gerke": "Gerke"
       },
-      "code": {
-          "ITU": "ITU",
-          "Morse": "Morse",
-          "Gerke": "Gerke"
-      },
       "speed": {
           1: "fa fa-wheelchair",
           2: "fa fa-bicycle",
