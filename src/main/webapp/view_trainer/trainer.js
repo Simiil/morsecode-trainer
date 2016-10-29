@@ -80,7 +80,7 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     $scope.sheetVisibilityStatus = true;
 
     function boolToMorse(bool) {
-        return (bool == true ? '-' : '•');
+        return (bool == true ? '-' : '.');
     }
 
     function challengeDataToCode(challengeData) {
