@@ -1,40 +1,5 @@
 # Morsecode Trainer [![Build Status](https://travis-ci.org/Simiil/morsecode-trainer.svg?branch=master)](https://travis-ci.org/Simiil/morsecode-trainer)
 
-## Overview
-A trainer for absolute beginners in morsecode who want to lerne the morse alphabet.
-
-## Preconditions
-
-ITU Morsecode
-
-## Frontend
-
-### Mockups
-
-![Mockup UI v0.1 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-v0.1.jpg)
-
-![Mockup UI Desktop v1.0 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-desktop-v1.0.jpg)
-
-![Mockup UI Mobile v1.0 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-mobile-v1.0.jpg)
-
-![Mockup UI Desktop v1.1 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-desktop-v1.1.jpg)
-
-![Mockup UI Mobile v1.1 ](https://raw.githubusercontent.com/Simiil/morsecode-trainer/master/mockups/MorseCodeTrainer-Mockup-mobile-v1.1.jpg)
-
-## Conventions
-
-JS Datatype of morsecode characters:
-
-```javascript
-var itu = {
-        A: ".-",
-        B: "-...",
-        ...
-    };
-```
-
-
-
 ## Backend
 
 Runs on Tomcat.
@@ -57,4 +22,5 @@ the site should run at localhost:9090
 
 ## License
 
-TODO
+TODO:
+[Maybe GNU GPL?](http://www.gnu.org/licenses/gpl-howto.html)

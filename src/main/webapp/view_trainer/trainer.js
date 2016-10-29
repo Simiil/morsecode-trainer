@@ -12,7 +12,7 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
 .controller('TrainerCtrl', ['$scope', '$http', function($scope, $http) {
 
 
-    $scope.challenge = '---';
+    // $scope.challenge = '---';
     $scope.itu = {
         A: ".-",
         B: "-...",
@@ -61,11 +61,6 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
               "Morse": "Morse",
               "Gerke": "Gerke"
           },
-          "code": {
-              "ITU": "ITU",
-              "Morse": "Morse",
-              "Gerke": "Gerke"
-          },
           "speed": {
               1: "fa fa-wheelchair",
               2: "fa fa-bicycle",
@@ -90,6 +85,9 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
           $http.get("/api/morse/game/gettone/foo").then(function(response) {
               $scope.aktChallenge = response.data;
               console.log($scope.aktChallenge);
+              console.log($scope.aktChallenge.character.tone[0].toString());
+              console.log("false");
+              return $scope.aktChallenge.character.tone[0].toString();
           });
       }
 
@@ -125,10 +123,26 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
 
 
       $scope.onInit = function(){
-          $scope.getChallenge().then(function(response){
-                $scope.challenge = response.data.character.tone;
-                console.log("hier wurden daten abgefragt!");
-          });
+          $scope.challenge = $scope.getChallenge();
+        //   $scope.challenge = "$scope.getChalleng";
+        //   $scope.getChallenge().then(function(response){
+        //         console.log("hier wurden daten abgefragt!");
+        //   });
       };
-    //   $scope.onInit();
+      $scope.onInit();
+    $scope.setChallenge = function(letter) {
+        $scope.challenge = $scope.itu[letter];
+    };
+
+    $scope.setCode = function(key) {
+        $scope.dropDownCodeActive = $scope.dropDownMenus["code"][key];
+    }
+
+    $scope.setSpeed = function(key) {
+        $scope.dropDownSpeedActive = $scope.dropDownMenus["speed"][key];
+    }
+
+    $scope.setNoise = function(key) {
+        $scope.dropDownNoiseActive = $scope.dropDownMenus["noise"][key];
+    }
 }]);
