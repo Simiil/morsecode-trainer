@@ -8,10 +8,10 @@ import de.hsrm.hktn.morsecodetrainer.model.protocol.EncodedTone;
 public class Util {
 	public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz1234567890";
 	private static HashMap<Character, EncodedTone> tones = new HashMap<>();
-	
+
 	private static final Boolean s = false;
 	private static final Boolean l = true;
-	
+
 	static{
 		tones.put('a', new EncodedTone(s,l));
 		tones.put('b', new EncodedTone(l,s,s,s));
@@ -19,7 +19,7 @@ public class Util {
 		tones.put('d', new EncodedTone(l,s,s));
 		tones.put('e', new EncodedTone(s));
 		tones.put('f', new EncodedTone(s,s,l,s));
-		tones.put('g',new EncodedTone(l,l,s) );
+		tones.put('g', new EncodedTone(l,l,s));
 		tones.put('h', new EncodedTone(s,s,s,s));
 		tones.put('i', new EncodedTone(s,s));
 		tones.put('j', new EncodedTone(s,l,l,l));
@@ -49,18 +49,16 @@ public class Util {
 		tones.put('8', new EncodedTone(l,l,l,s,s));
 		tones.put('9', new EncodedTone(l,l,l,l,s));
 		tones.put('0', new EncodedTone(l,l,l,l,l));
-		
-		
 	}
 	public static Character random(){
 		Random r = new Random();
 		int next = r.nextInt(ALPHABET.length());
-		
+
 		return ALPHABET.charAt(next);
 	}
-	
+
 	public static EncodedTone mapToTone(Character c){
 		return tones.get(c);
 	}
-	
+
 }

@@ -98,7 +98,6 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
         $http.get("/api/morse/game/gettone/foo").then(function(response) {
             $scope.challengeData = response.data;
             $scope.challenge = challengeDataToCode($scope.challengeData);
-            return $scope.challengeData.character.tone[0].toString();
         });
     }
 
