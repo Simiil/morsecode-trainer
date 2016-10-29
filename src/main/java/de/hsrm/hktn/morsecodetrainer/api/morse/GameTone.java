@@ -2,6 +2,8 @@ package de.hsrm.hktn.morsecodetrainer.api.morse;
 
 import java.util.UUID;
 
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
@@ -20,13 +22,17 @@ import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
 
 @Path("morse/game/gettone")
 public class GameTone {
-	
+
+	@Inject
+	public ServletContext context;
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{user}")
 	public ToneChallenge getNextTone(@PathParam("user") String user) {
 		System.out.println("get tone for user " + user);
-		return ToneChallengeRegistry.INSTANCE.createNewChallence(user);
+		ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
+		return reg.createNewChallence(user);
 	}
 
 	@PUT
@@ -35,11 +41,12 @@ public class GameTone {
 	@Path("/{user}")
 	public Acknowledgement respond(@PathParam("user") String user, ToneResponse tr) {
 		try {
-			return new Acknowledgement(ToneChallengeRegistry.INSTANCE.respond(user, UUID.fromString(tr.id), tr.character.charAt(0)));
+			ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
+			return new Acknowledgement(reg.respond(user, UUID.fromString(tr.id), tr.character.charAt(0)));
 		} catch (NoSuchUserException | NoSuchChallengeException e) {
 			e.printStackTrace();
 			throw new InternalServerErrorException();
 		}
-		
+
 	}
 }
