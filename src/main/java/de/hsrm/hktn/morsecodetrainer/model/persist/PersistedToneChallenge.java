@@ -12,7 +12,7 @@ public class PersistedToneChallenge {
 	@Id
 	public UUID id;
 
-	public char tone;
+	public String solution;
 
 	@Id
 	public User user;

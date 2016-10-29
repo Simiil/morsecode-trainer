@@ -7,9 +7,10 @@ import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
 
 public interface IPersistence {
 
-	void registerNewChallenge(String user, UUID id, Character c) throws NoSuchUserException;
+	void registerNewChallenge(String user, UUID id, String c) throws NoSuchUserException;
 
-	boolean checkAndRemoveChallenge(String user, UUID id, Character test)
-			throws NoSuchUserException, NoSuchChallengeException;
-
+	String getChallenge(String user, UUID id) throws NoSuchUserException, NoSuchChallengeException;
+	
+	String removeChallenge(String user, UUID id) throws NoSuchUserException, NoSuchChallengeException;
+	
 }

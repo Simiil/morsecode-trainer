@@ -3,7 +3,7 @@ package de.hsrm.hktn.morsecodetrainer.persistence;
 import java.util.HashMap;
 import java.util.Random;
 
-import de.hsrm.hktn.morsecodetrainer.model.EncodedTone;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.EncodedTone;
 
 public class Util {
 	public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz1234567890";

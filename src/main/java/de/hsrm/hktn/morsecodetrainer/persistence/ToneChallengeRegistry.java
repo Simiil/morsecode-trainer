@@ -1,31 +1,36 @@
 package de.hsrm.hktn.morsecodetrainer.persistence;
 
+import java.util.Objects;
 import java.util.UUID;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
-import de.hsrm.hktn.morsecodetrainer.model.ToneChallenge;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.ToneChallenge;
+import de.hsrm.hktn.morsecodetrainer.morse.GeneratedMorseCodeEvent;
+import de.hsrm.hktn.morsecodetrainer.morse.IMorseCodeProvider;
 
 public class ToneChallengeRegistry {
 
 	private final IPersistence reg;
+	private IMorseCodeProvider mcp;
 
-	public ToneChallengeRegistry(IPersistence p) {
+	public ToneChallengeRegistry(IPersistence p, IMorseCodeProvider mcp) {
 		this.reg = p;
+		this.mcp = mcp;
 	}
 
 	public ToneChallenge createNewChallence(String user) throws NoSuchUserException {
-		UUID id = UUID.randomUUID();
-		Character t = Util.random();
-		System.out.println("create challenge " + t);
-		ToneChallenge challenge = new ToneChallenge(Util.mapToTone(t), id);
-		reg.registerNewChallenge(user, id, t);
-		return challenge;
+		
+		GeneratedMorseCodeEvent ch = this.mcp.createChallengeForUser(user);
+		reg.registerNewChallenge(user, ch.challenge.id, ch.solution);
+		return ch.challenge;
 	}
 
-	public boolean respond(String user, UUID id, Character response)
+	public boolean respond(String user, UUID id, String response)
 			throws NoSuchUserException, NoSuchChallengeException {
-		return reg.checkAndRemoveChallenge(user, id, response);
+		String challenge = reg.getChallenge(user, id);
+		reg.removeChallenge(user, id);
+		return Objects.equals(challenge, response);
 	}
 
 }

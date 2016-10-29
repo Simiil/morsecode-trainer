@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import de.hsrm.hktn.morsecodetrainer.morse.internal.SimpleMorseCodeProvider;
 import de.hsrm.hktn.morsecodetrainer.persistence.JPAPersistenceRegistry;
 import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
 
@@ -31,7 +32,7 @@ public class ContextListener implements ServletContextListener {
 		ServletContext context = event.getServletContext();
 		try {
 			JPAPersistenceRegistry jpr = new JPAPersistenceRegistry(emf);
-			ToneChallengeRegistry tcr = new ToneChallengeRegistry(jpr);
+			ToneChallengeRegistry tcr = new ToneChallengeRegistry(jpr, new SimpleMorseCodeProvider());
 			context.setAttribute(EMF, emf);
 			context.setAttribute(PERSISTENCE, jpr);
 			context.setAttribute(CHALLENGES, tcr);

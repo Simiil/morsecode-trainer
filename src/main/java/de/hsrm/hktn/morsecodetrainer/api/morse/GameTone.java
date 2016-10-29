@@ -15,9 +15,9 @@ import javax.ws.rs.core.MediaType;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
-import de.hsrm.hktn.morsecodetrainer.model.Acknowledgement;
-import de.hsrm.hktn.morsecodetrainer.model.ToneChallenge;
-import de.hsrm.hktn.morsecodetrainer.model.ToneResponse;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.Acknowledgement;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.ToneChallenge;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.MorseResponse;
 import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
 
 @Path("morse/game/gettone")
@@ -39,10 +39,10 @@ public class GameTone {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{user}")
-	public Acknowledgement respond(@PathParam("user") String user, ToneResponse tr) {
+	public Acknowledgement respond(@PathParam("user") String user, MorseResponse tr) {
 		try {
 			ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
-			return new Acknowledgement(reg.respond(user, UUID.fromString(tr.id), tr.character.charAt(0)));
+			return new Acknowledgement(reg.respond(user, UUID.fromString(tr.id), tr.character));
 		} catch (NoSuchUserException | NoSuchChallengeException e) {
 			e.printStackTrace();
 			throw new InternalServerErrorException();

@@ -12,8 +12,8 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
 .controller('TrainerCtrl', ['$scope', '$http', function($scope, $http) {
 
 
-        $scope.challenge = '---';
-        $scope.itu = {
+    $scope.challenge = '---';
+    $scope.itu = {
         A: ".-",
         B: "-...",
         C: "-.-.",
@@ -51,10 +51,42 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
         8: "---..",
         9: "----.",
         0: "-----",
-        };
-        $scope.alphabet = $scope.itu;
+    };
+    $scope.alphabet = $scope.itu;
 
-        $scope.getChallenge = function(){
+      $scope.dropDownMenus = {};
+      $scope.dropDownMenus = {
+          "code": {
+              "ITU": "ITU",
+              "Morse": "Morse",
+              "Gerke": "Gerke"
+          },
+          "code": {
+              "ITU": "ITU",
+              "Morse": "Morse",
+              "Gerke": "Gerke"
+          },
+          "speed": {
+              1: "fa fa-wheelchair",
+              2: "fa fa-bicycle",
+              3: "fa fa-car",
+              4: "fa fa-plane",
+              5: "fa fa-rocket"
+          },
+          "noise": {
+              1: "fa fa-circle",
+              2: "fa fa-certificate",
+              3: "fa fa-asterisk"
+          }
+      };
+
+      $scope.dropDownCodeActive = $scope.dropDownMenus["code"]["ITU"];
+      $scope.dropDownSpeedActive = $scope.dropDownMenus["speed"][1];
+      $scope.dropDownNoiseActive = $scope.dropDownMenus["noise"][1];
+      $scope.codeVisibilityStatus = true;
+      $scope.sheetVisibilityStatus = true;
+
+      $scope.getChallenge = function(){
           $http.get("/api/morse/game/gettone/foo").then(function(response) {
               $scope.aktChallenge = response.data;
               console.log($scope.aktChallenge);
