@@ -7,45 +7,38 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#">Statistik</a></li>
+                        <li ng-if="!user"><a href="#">Login</a></li>
+                        <li ng-if="user"><a href="#">Account</a></li>
+                        <li ng-if="user"><a href="#">Statistik</a></li>
                         <li><a href="#">About</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Logout</a></li>
+                        <li role="separator" class="divider" ng-if="user"></li>
+                        <li ng-if="user"><a href="#">Logout</a></li>
                     </ul>
                 </div>
                 <button type="button" class="btn btn-primary btn-toggleable" ng-click="btnVolume.status = !btnVolume.status"><i ng-class="{true:'fa fa-volume-up', false:'fa fa-volume-off'}[!btnVolume.status]"></i></button>
                 <button type="button" class="btn btn-primary btn-toggleable" ng-click="btnEye.status = !btnEye.status"><i ng-class="{true:'fa fa-eye', false:'fa fa-eye-slash'}[!btnEye.status]"></i></button>
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <small>ITU</small><span class="caret"></span>
+                        <small>{{dropDownCodeActive}}</small><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <!-- <li role="separator" class="divider"></li> -->
-                        <li><a href="#"><small>Morse</small></a></li>
-                        <li><a href="#"><small>Gerke</small></a></li>
+                        <li ng-repeat="(key, value) in dropDownMenus.code"><a href="#"><small>{{value}}</small></a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-wheelchair"></i><span class="caret"></span>
+                        <i class="{{dropDownSpeedActive}}"></i><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <!-- <li role="separator" class="divider"></li> -->
-                        <li><a href="#"><i class="fa fa-bicycle"></i></a></li>
-                        <li><a href="#"><i class="fa fa-car"></i></a></li>
-                        <li><a href="#"><i class="fa fa-plane"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rocket"></i></a></li>
+                        <li ng-repeat="(key, value) in dropDownMenus.speed"><a href="#"><i class="{{value}}"></i></a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-circle"></i><span class="caret"></span>
+                        <i class="{{dropDownNoiseActive}}"></i><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <!-- <li role="separator" class="divider"></li> -->
-                        <li><a href="#"><i class="fa fa-certificate"></i></a></li>
-                        <li><a href="#"><i class="fa fa-asterisk"></i></a></li>
+                        <li ng-repeat="(key, value) in dropDownMenus.noise"><a href="#"><i class="{{value}}"></i></a></li>
                     </ul>
                 </div>
             </div>
