@@ -1,4 +1,4 @@
-package de.hsrm.hktn.morsecodetrainer.model;
+package de.hsrm.hktn.morsecodetrainer.model.protocol;
 
 import java.util.ArrayList;
 import java.util.UUID;

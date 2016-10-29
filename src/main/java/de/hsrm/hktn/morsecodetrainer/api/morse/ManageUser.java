@@ -21,9 +21,9 @@ import javax.ws.rs.core.Response;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
-import de.hsrm.hktn.morsecodetrainer.model.Acknowledgement;
-import de.hsrm.hktn.morsecodetrainer.model.ToneResponse;
 import de.hsrm.hktn.morsecodetrainer.model.persist.User;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.Acknowledgement;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.MorseResponse;
 import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
 
 @Path("morse/user")
