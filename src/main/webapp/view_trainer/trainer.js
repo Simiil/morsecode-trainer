@@ -81,6 +81,8 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
   $scope.dropDownCodeActive = $scope.dropDownMenus["code"]["ITU"];
   $scope.dropDownSpeedActive = $scope.dropDownMenus["speed"][1];
   $scope.dropDownNoiseActive = $scope.dropDownMenus["noise"][1];
+  $scope.codeVisibilityStatus = true;
+  $scope.sheetVisibilityStatus = true;
 
   $scope.getChallenge = function(){
       $http.get("/api/morse/game/gettone/foo").then(function(response) {

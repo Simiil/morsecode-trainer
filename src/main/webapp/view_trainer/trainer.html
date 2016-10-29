@@ -48,7 +48,10 @@
                 <div class="col-md-12">
                     <h1 class="text-center">MorseCodeTrainer</h1>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-1 pull-right">
+                    <button type="button" class="btn btn-link" ng-click="codeVisibilityStatus = !codeVisibilityStatus"><i ng-class="{true:'fa fa-toggle-on', false:'fa fa-toggle-off'}[codeVisibilityStatus]"></i></button>
+                </div>
+                <div class="col-md-10 col-md-push-1" ng-if="codeVisibilityStatus">
                     <h1 id="challenge" class="text-center">{{challenge}}</h1>
                 </div>
                 <div class="col-md-12">
@@ -61,8 +64,14 @@
             </div>
         </div>
         <div class="col-md-3">
-            <h2>CheatSheet</h2>
-            <ul class="list-group">
+
+            <div class="row">
+                <h2 class="col-md-10 col-md-push-1">CheatSheet</h2>
+                <div class="col-md-1 pull-right">
+                    <button type="button" class="btn btn-link" ng-click="sheetVisibilityStatus = !sheetVisibilityStatus"><i ng-class="{true:'fa fa-toggle-on', false:'fa fa-toggle-off'}[sheetVisibilityStatus]"></i></button>
+                </div>
+            </div>
+            <ul class="list-group" ng-if="sheetVisibilityStatus">
                 <li class="list-group-item" ng-repeat="(key, value) in itu">{{key}} = {{value}}</li>
             </ul>
         </div>
