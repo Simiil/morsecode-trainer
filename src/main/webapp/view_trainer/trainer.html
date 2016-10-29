@@ -22,7 +22,7 @@
                         <small>{{dropDownCodeActive}}</small><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="(key, value) in dropDownMenus.code"><a href><small>{{value}}</small></a></li>
+                        <li ng-repeat="(key, value) in dropDownMenus.code"><a href ng-click="setCode(key)"><small>{{value}}</small></a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
@@ -30,7 +30,7 @@
                         <i class="{{dropDownSpeedActive}}"></i><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="(key, value) in dropDownMenus.speed"><a href><i class="{{value}}"></i></a></li>
+                        <li ng-repeat="(key, value) in dropDownMenus.speed"><a href ng-click="setSpeed(key)"><i class="{{value}}"></i></a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
@@ -38,7 +38,7 @@
                         <i class="{{dropDownNoiseActive}}"></i><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="(key, value) in dropDownMenus.noise"><a href><i class="{{value}}"></i></a></li>
+                        <li ng-repeat="(key, value) in dropDownMenus.noise"><a href ng-click="setNoise(key)"><i class="{{value}}"></i></a></li>
                     </ul>
                 </div>
             </div>

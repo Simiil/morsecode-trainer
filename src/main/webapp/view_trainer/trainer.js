@@ -114,4 +114,16 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
   $scope.setChallenge = function(letter) {
     $scope.challenge = $scope.itu[letter];
   };
+
+  $scope.setCode = function(key) {
+      $scope.dropDownCodeActive = $scope.dropDownMenus["code"][key];
+  }
+
+  $scope.setSpeed = function(key) {
+      $scope.dropDownSpeedActive = $scope.dropDownMenus["speed"][key];
+  }
+
+  $scope.setNoise = function(key) {
+      $scope.dropDownNoiseActive = $scope.dropDownMenus["noise"][key];
+  }
 }]);
