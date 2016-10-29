@@ -14,7 +14,7 @@ public class ToneChallengeRegistry {
 		this.reg = p;
 	}
 
-	public ToneChallenge createNewChallence(String user) {
+	public ToneChallenge createNewChallence(String user) throws NoSuchUserException {
 		UUID id = UUID.randomUUID();
 		Character t = Util.random();
 		System.out.println("create challenge " + t);

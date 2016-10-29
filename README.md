@@ -48,6 +48,7 @@ the site should run at localhost:9090
 
 ## Contributors
 
+* Tobias Bergmann
 * Kalle Hilsenbek
 * Johannes Höß
 * Jan Klaas
