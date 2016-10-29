@@ -3,15 +3,18 @@ package de.hsrm.hktn.morsecodetrainer.model;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class ToneChallenge {
+	public EncodedTone character;
 	
-	public Tone character;
 	public UUID id;
-
-	public ToneChallenge(Tone tone, UUID id) {
+	
+	public ToneChallenge(EncodedTone tone, UUID id) {
 		this.id = id;
 		this.character = tone;
 	}
@@ -22,7 +25,7 @@ public class ToneChallenge {
 		tone.add(false);
 		tone.add(true);
 		tone.add(true);
-		return new ToneChallenge(new Tone(tone), UUID.randomUUID());
+		return new ToneChallenge(new EncodedTone(tone), UUID.randomUUID());
 	}
 }
 
