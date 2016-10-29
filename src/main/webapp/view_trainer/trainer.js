@@ -86,20 +86,19 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     function challengeDataToCode(challengeData) {
         challenge = "";
         for (var l in challengeData.character.tone) {
-            if (l !== undefined) {
-                challenge = challenge + boolToMorse(l);
+            if (challengeData.character.tone.hasOwnProperty(l)) {
+                challenge = challenge + boolToMorse(challengeData.character.tone[l]);
             }
         }
         return challenge;
     }
 
+    // gets a new challenge morse code
     $scope.getChallenge = function() {
         $http.get("/api/morse/game/gettone/foo").then(function(response) {
-            console.log("asked!");
             $scope.challengeData = response.data;
             console.log($scope.challengeData);
             $scope.challenge = challengeDataToCode($scope.challengeData);
-            console.log($scope.challenge);
             return $scope.challengeData.character.tone[0].toString();
         });
     }
@@ -131,7 +130,6 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     };
 
     $scope.onInit = function() {
-        $scope.challenge = "---";
         $scope.getChallenge();
     };
 
