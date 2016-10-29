@@ -8,33 +8,43 @@ import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
 
 public class TransientRegistry implements IPersistence {
-	private HashMap<String, HashMap<UUID, Character>> registry = new HashMap<>();
+	private HashMap<String, HashMap<UUID, String>> registry = new HashMap<>();
 
-	/* (non-Javadoc)
-	 * @see de.hsrm.hktn.morsecodetrainer.persistence.IPersistence#registerNewChallenge(java.lang.String, java.util.UUID, java.lang.Character)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see de.hsrm.hktn.morsecodetrainer.persistence.IPersistence#
+	 * registerNewChallenge(java.lang.String, java.util.UUID,
+	 * java.lang.Character)
 	 */
 	@Override
-	public void registerNewChallenge(String user, UUID id, Character c){
-		if(!registry.containsKey(user)){
-			registry.put(user, new HashMap<UUID, Character>());
+	public void registerNewChallenge(String user, UUID id, String c) {
+		if (!registry.containsKey(user)) {
+			registry.put(user, new HashMap<UUID, String>());
 		}
-		System.out.println("id is "+id);
+		System.out.println("id is " + id);
 		registry.get(user).put(id, c);
 	}
-	
-	/* (non-Javadoc)
-	 * @see de.hsrm.hktn.morsecodetrainer.persistence.IPersistence#checkAndRemoveChallenge(java.lang.String, java.util.UUID, java.lang.Character)
-	 */
+
 	@Override
-	public boolean checkAndRemoveChallenge(String user, UUID id, Character test) throws NoSuchUserException, NoSuchChallengeException{
-		if(!registry.containsKey(user)){
+	public String getChallenge(String user, UUID id) throws NoSuchUserException, NoSuchChallengeException {
+		checkSanity(user, id);
+		return registry.get(user).get(id);
+	}
+
+	@Override
+	public String removeChallenge(String user, UUID id) throws NoSuchUserException, NoSuchChallengeException {
+		checkSanity(user, id);
+		return registry.get(user).remove(id);
+	}
+
+	private void checkSanity(String user, UUID id) throws NoSuchUserException, NoSuchChallengeException {
+		if (!registry.containsKey(user)) {
 			throw new NoSuchUserException(user);
 		}
-		if(!registry.get(user).containsKey(id)){
+		if (!registry.get(user).containsKey(id)) {
 			throw new NoSuchChallengeException(user, id);
 		}
-		System.out.println("checking id "+id);
-		return Objects.equals(registry.get(user).remove(id), test);
 	}
-	
+
 }

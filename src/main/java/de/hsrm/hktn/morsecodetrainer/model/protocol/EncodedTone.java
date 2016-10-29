@@ -1,4 +1,4 @@
-package de.hsrm.hktn.morsecodetrainer.model;
+package de.hsrm.hktn.morsecodetrainer.model.protocol;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +10,9 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-@Entity
 @Table(name = "TONE_ENC")
 public class EncodedTone {
-	@Id
-	@GeneratedValue
-	long id;
-
 	public List<Boolean> tone;
-
-	public EncodedTone() {
-		// JPA Constructor
-	}
 
 	public EncodedTone(Boolean... tones) {
 		tone = new ArrayList<>();

@@ -1,4 +1,4 @@
-package de.hsrm.hktn.morsecodetrainer.model;
+package de.hsrm.hktn.morsecodetrainer.model.protocol;
 
 public class Acknowledgement {
 	public boolean content;
