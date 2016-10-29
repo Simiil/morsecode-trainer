@@ -9,7 +9,7 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
   });
 }])
 
-.controller('TrainerCtrl', ['$scope', function($scope) {
+.controller('TrainerCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.challenge = '---';
   $scope.itu = {
     A: ".-",
@@ -51,6 +51,33 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
     0: "-----",
   };
   $scope.alphabet = $scope.itu;
+
+  $scope.getChallenge = function(){
+      $http.get("/api/morse/game/gettone/foo").then(function(response) {
+          $scope.aktChallenge = response.data;
+          console.log($scope.aktChallenge);
+      });
+  }
+
+  $scope.putChallenge = function(character){
+
+      var req = {
+         method: 'PUT',
+         url: '/api/morse/game/gettone/foo',
+         headers: {
+           'Content-Type': "application/json"
+         },
+         data: {
+            	"character": character,
+              	"id": $scope.aktChallenge.id
+            }
+        }
+
+        $http(req).then(function(response) {
+            console.log("Sending Successful");
+            console.log(response.data);
+        });
+  }
 
   $scope.setChallenge = function(letter) {
     $scope.challenge = $scope.itu[letter];
