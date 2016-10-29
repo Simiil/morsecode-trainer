@@ -5,6 +5,7 @@
 	<persistence-unit name="bmorsecodetrainer"
 		transaction-type="RESOURCE_LOCAL">
 		<class>de.hsrm.hktn.morsecodetrainer.model.persist.PersistedToneChallenge</class>
+		<class>de.hsrm.hktn.morsecodetrainer.model.persist.User</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:./db/repository"/>

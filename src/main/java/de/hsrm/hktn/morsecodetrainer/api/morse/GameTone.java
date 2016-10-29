@@ -29,7 +29,7 @@ public class GameTone {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{user}")
-	public ToneChallenge getNextTone(@PathParam("user") String user) {
+	public ToneChallenge getNextTone(@PathParam("user") String user) throws NoSuchUserException {
 		System.out.println("get tone for user " + user);
 		ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
 		return reg.createNewChallence(user);

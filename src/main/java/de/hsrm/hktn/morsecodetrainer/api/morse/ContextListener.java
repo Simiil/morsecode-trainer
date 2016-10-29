@@ -10,10 +10,10 @@ import de.hsrm.hktn.morsecodetrainer.persistence.JPAPersistenceRegistry;
 import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
 
 public class ContextListener implements ServletContextListener {
-
 	public static final String PERSISTENCE = "persistence";
 
 	public static final String CHALLENGES = "challenges";
+	public static final String EMF = "entifymanagerfactory";
 	
 
 	
@@ -32,6 +32,7 @@ public class ContextListener implements ServletContextListener {
 		try {
 			JPAPersistenceRegistry jpr = new JPAPersistenceRegistry(emf);
 			ToneChallengeRegistry tcr = new ToneChallengeRegistry(jpr);
+			context.setAttribute(EMF, emf);
 			context.setAttribute(PERSISTENCE, jpr);
 			context.setAttribute(CHALLENGES, tcr);
 		} catch (Exception ex) {
