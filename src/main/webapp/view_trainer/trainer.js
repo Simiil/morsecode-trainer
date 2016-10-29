@@ -73,13 +73,19 @@ angular.module('morsecodeTrainer.trainer', ['ngRoute'])
             }
         }
 
+        var responseData;
+
         $http(req).then(function(response) {
             console.log("Sending Successful");
-            console.log(response.data);
+            responseData = response.data;
+            console.log(responseData);
+            return responseData;
         });
   }
 
   $scope.setChallenge = function(letter) {
-    $scope.challenge = $scope.itu[letter];
+    $scope.lastChallenge =  $scope.putChallenge(letter);
+    $scope.challenge = $scope.itu[letter] + $scope.lastChallenge;
+    $scope.getChallenge();
   };
 }]);
