@@ -32,9 +32,9 @@ public class JPAPersistenceRegistry implements IPersistence {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		PersistedToneChallenge ptc = new PersistedToneChallenge();
-		ptc.id = id;
-		ptc.solution = c;
-		ptc.user = u;
+		ptc.setId(id);
+		ptc.setSolution(c);
+		ptc.setUser(u);
 		em.persist(ptc);
 		transaction.commit();
 	}
@@ -42,11 +42,12 @@ public class JPAPersistenceRegistry implements IPersistence {
 	@Override
 	public String getChallenge(String user, UUID id) throws NoSuchUserException, NoSuchChallengeException {
 		EntityManager em = emf.createEntityManager();
-		return getPersistedChallenge(user, id, em).solution;
+		return getPersistedChallenge(user, id, em).getSolution();
 
 	}
-	
-	private PersistedToneChallenge getPersistedChallenge(String user, UUID id, EntityManager em) throws NoSuchChallengeException {
+
+	private PersistedToneChallenge getPersistedChallenge(String user, UUID id, EntityManager em)
+			throws NoSuchChallengeException {
 		ChallengeId cid = new ChallengeId();
 		cid.id = id;
 		cid.user = user;
@@ -61,41 +62,42 @@ public class JPAPersistenceRegistry implements IPersistence {
 	public String removeChallenge(String user, UUID id) throws NoSuchUserException, NoSuchChallengeException {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction t = em.getTransaction();
-		try{
+		try {
 			t.begin();
 			PersistedToneChallenge ch = getPersistedChallenge(user, id, em);
 			em.remove(ch);
-			return ch.solution;
-		}finally {
+			return ch.getSolution();
+		} finally {
 			t.commit();
 		}
 	}
 
-//	@Override
-//	public boolean checkAndRemoveChallenge(String user, UUID id, Character test)
-//			throws NoSuchUserException, NoSuchChallengeException {
-//		EntityManager em = emf.createEntityManager();
-//		EntityTransaction transaction = em.getTransaction();
-//		try {
-//			transaction.begin();
-//			ChallengeId cid = new ChallengeId();
-//			cid.id = id;
-//			// User puser = em.find(User.class, user);
-//			// if (puser == null) {
-//			// throw new NoSuchUserException(user);
-//			// }
-//			cid.user = user;
-//			PersistedToneChallenge find = em.find(PersistedToneChallenge.class, cid);
-//			if (find == null) {
-//				throw new NoSuchChallengeException(user, id);
-//			}
-//			em.remove(find);
-//			return Objects.equals(find.tone, test);
-//		} catch (Throwable e) {
-//			e.printStackTrace();
-//			throw e;
-//		} finally {
-//			transaction.commit();
-//		}
-//	}
+	// @Override
+	// public boolean checkAndRemoveChallenge(String user, UUID id, Character
+	// test)
+	// throws NoSuchUserException, NoSuchChallengeException {
+	// EntityManager em = emf.createEntityManager();
+	// EntityTransaction transaction = em.getTransaction();
+	// try {
+	// transaction.begin();
+	// ChallengeId cid = new ChallengeId();
+	// cid.id = id;
+	// // User puser = em.find(User.class, user);
+	// // if (puser == null) {
+	// // throw new NoSuchUserException(user);
+	// // }
+	// cid.user = user;
+	// PersistedToneChallenge find = em.find(PersistedToneChallenge.class, cid);
+	// if (find == null) {
+	// throw new NoSuchChallengeException(user, id);
+	// }
+	// em.remove(find);
+	// return Objects.equals(find.tone, test);
+	// } catch (Throwable e) {
+	// e.printStackTrace();
+	// throw e;
+	// } finally {
+	// transaction.commit();
+	// }
+	// }
 }

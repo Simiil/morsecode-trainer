@@ -10,10 +10,36 @@ import javax.persistence.IdClass;
 @IdClass(ChallengeId.class)
 public class PersistedToneChallenge {
 	@Id
-	public UUID id;
+	private UUID id;
 
-	public String solution;
+	private String solution;
 
 	@Id
-	public User user;
+	private User user;
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getSolution() {
+		return solution;
+	}
+
+	public void setSolution(String solution) {
+		this.solution = solution;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 }

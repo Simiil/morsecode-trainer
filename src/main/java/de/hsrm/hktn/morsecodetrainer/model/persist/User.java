@@ -6,8 +6,24 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	@Id
-	public String username;
+	private String username;
 
-	public String mail;
+	private String mail;
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 }

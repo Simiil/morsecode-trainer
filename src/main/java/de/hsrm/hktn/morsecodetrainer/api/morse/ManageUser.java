@@ -30,7 +30,7 @@ public class ManageUser {
 		t.begin();
 		try {
 			User u = new User();
-			u.username = user;
+			u.setUsername(user);
 			em.persist(u);
 			return Response.ok().build();
 		} finally {
