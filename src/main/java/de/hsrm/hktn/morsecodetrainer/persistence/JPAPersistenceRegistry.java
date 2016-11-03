@@ -1,6 +1,5 @@
 package de.hsrm.hktn.morsecodetrainer.persistence;
 
-import java.util.Objects;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;

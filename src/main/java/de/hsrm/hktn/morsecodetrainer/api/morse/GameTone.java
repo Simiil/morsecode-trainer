@@ -16,8 +16,8 @@ import javax.ws.rs.core.MediaType;
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
 import de.hsrm.hktn.morsecodetrainer.model.protocol.Acknowledgement;
-import de.hsrm.hktn.morsecodetrainer.model.protocol.ToneChallenge;
 import de.hsrm.hktn.morsecodetrainer.model.protocol.MorseResponse;
+import de.hsrm.hktn.morsecodetrainer.model.protocol.ToneChallenge;
 import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
 
 @Path("morse/game/gettone")

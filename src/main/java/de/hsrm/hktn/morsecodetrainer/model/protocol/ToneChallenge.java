@@ -3,9 +3,6 @@ package de.hsrm.hktn.morsecodetrainer.model.protocol;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement

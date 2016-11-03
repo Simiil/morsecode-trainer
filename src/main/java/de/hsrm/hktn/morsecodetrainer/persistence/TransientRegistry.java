@@ -1,7 +1,6 @@
 package de.hsrm.hktn.morsecodetrainer.persistence;
 
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.UUID;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
