@@ -1,12 +1,12 @@
 package de.hsrm.hktn.morsecodetrainer;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.UUID;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import de.hsrm.hktn.morsecodetrainer.model.protocol.EncodedTone;

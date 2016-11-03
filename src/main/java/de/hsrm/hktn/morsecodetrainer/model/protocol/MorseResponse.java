@@ -6,7 +6,4 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class MorseResponse {
 	public String character;
 	public String id;
-	
-	public MorseResponse() {
-	}
 }
