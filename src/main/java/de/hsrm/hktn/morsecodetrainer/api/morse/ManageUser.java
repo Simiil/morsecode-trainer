@@ -14,28 +14,41 @@ import javax.ws.rs.core.Response;
 
 import de.hsrm.hktn.morsecodetrainer.model.persist.User;
 
+/**
+ * A (currently simple) endpoint to manage users
+ * 
+ * @author Samuel Leisering
+ *
+ */
 @Path("morse/user")
 public class ManageUser {
-	
-	@Inject
-	public ServletContext context;
-	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/{user}")
-	public Response respond(@PathParam("user") String user) {
-		EntityManagerFactory emf = (EntityManagerFactory) context.getAttribute(ContextListener.EMF);
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction t = em.getTransaction();
-		t.begin();
-		try {
-			User u = new User();
-			u.setUsername(user);
-			em.persist(u);
-			return Response.ok().build();
-		} finally {
-			t.commit();
-		}
-		
-	}
+
+    @Inject
+    private ServletContext context;
+
+    /**
+     * Add a user
+     * 
+     * @param user
+     *            the username
+     * @return a response
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{user}")
+    public Response addUser(@PathParam("user") String user) {
+        EntityManagerFactory emf = (EntityManagerFactory) context.getAttribute(ContextListener.EMF);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction t = em.getTransaction();
+        t.begin();
+        try {
+            User u = new User();
+            u.setUsername(user);
+            em.persist(u);
+            return Response.ok().build();
+        } finally {
+            t.commit();
+        }
+
+    }
 }

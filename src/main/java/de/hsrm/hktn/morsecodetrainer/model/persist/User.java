@@ -3,27 +3,33 @@ package de.hsrm.hktn.morsecodetrainer.model.persist;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * A User
+ * 
+ * @author Samuel Leisering
+ *
+ */
 @Entity
 public class User {
-	@Id
-	private String username;
+    @Id
+    private String username;
 
-	private String mail;
+    private String mail;
 
-	public String getMail() {
-		return mail;
-	}
+    public String getMail() {
+        return mail;
+    }
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
 }

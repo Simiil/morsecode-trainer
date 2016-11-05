@@ -6,40 +6,45 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
+/**
+ * A Tone Challenge
+ * 
+ * @author Samuel Leisering
+ *
+ */
 @Entity
 @IdClass(ChallengeId.class)
 public class PersistedToneChallenge {
-	@Id
-	private UUID id;
+    @Id
+    private UUID id;
 
-	private String solution;
+    private String solution;
 
-	@Id
-	private User user;
+    @Id
+    private User user;
 
-	public UUID getId() {
-		return id;
-	}
+    public UUID getId() {
+        return id;
+    }
 
-	public void setId(UUID id) {
-		this.id = id;
-	}
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
-	public String getSolution() {
-		return solution;
-	}
+    public String getSolution() {
+        return solution;
+    }
 
-	public void setSolution(String solution) {
-		this.solution = solution;
-	}
+    public void setSolution(String solution) {
+        this.solution = solution;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
-	
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

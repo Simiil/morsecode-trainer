@@ -22,35 +22,61 @@ import de.hsrm.hktn.morsecodetrainer.model.protocol.MorseResponse;
 import de.hsrm.hktn.morsecodetrainer.model.protocol.ToneChallenge;
 import de.hsrm.hktn.morsecodetrainer.persistence.ToneChallengeRegistry;
 
+/**
+ * Represents the API endpoint for a simple Tone Challenge game. <br>
+ * A new challenge can be retrieved with {@link #getNextTone(String)} <br>
+ * The challenge can be responded to with
+ * {@link #respond(String, MorseResponse)}
+ * 
+ * @author Samuel Leisering
+ *
+ */
 @Path("morse/game/gettone")
 public class GameTone {
-	
-	private static final Logger logger = Logger.getLogger(GameTone.class.getName());
 
-	@Inject
-	public ServletContext context;
+    private static final Logger LOGGER = Logger.getLogger(GameTone.class.getName());
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{user}")
-	public ToneChallenge getNextTone(@PathParam("user") String user) throws NoSuchUserException {
-		logger.info("get tone for user " + user);
-		ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
-		return reg.createNewChallence(user);
-	}
+    @Inject
+    private ServletContext context;
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{user}")
-	public Acknowledgement respond(@PathParam("user") String user, MorseResponse tr) {
-		try {
-			ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
-			return new Acknowledgement(reg.respond(user, UUID.fromString(tr.id), tr.character));
-		} catch (NoSuchUserException | NoSuchChallengeException e) {
-			logger.log(Level.SEVERE, e.getMessage(), e);
-			throw new InternalServerErrorException(e);
-		}
+    /**
+     * create a new Tone Challenge
+     * 
+     * @param user
+     *            the username
+     * @return the new challenge
+     * @throws NoSuchUserException
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{user}")
+    public ToneChallenge getNextTone(@PathParam("user") String user) throws NoSuchUserException {
+        LOGGER.info("get tone for user " + user);
+        ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
+        return reg.createNewChallence(user);
+    }
 
-	}
+    /**
+     * respond to a challenge.
+     * 
+     * @param user
+     *            the user
+     * @param tr
+     *            the response
+     * @return an {@link Acknowledgement}
+     */
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{user}")
+    public Acknowledgement respond(@PathParam("user") String user, MorseResponse tr) {
+        try {
+            ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
+            return new Acknowledgement(reg.respond(user, UUID.fromString(tr.id), tr.character));
+        } catch (NoSuchUserException | NoSuchChallengeException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new InternalServerErrorException(e);
+        }
+
+    }
 }
