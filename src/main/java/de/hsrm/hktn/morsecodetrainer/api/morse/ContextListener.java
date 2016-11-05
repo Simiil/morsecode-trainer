@@ -31,15 +31,11 @@ public class ContextListener implements ServletContextListener {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("bmorsecodetrainer");
 		logger.info("initialize Persistence " + emf);
 		ServletContext context = event.getServletContext();
-		try {
-			JPAPersistenceRegistry jpr = new JPAPersistenceRegistry(emf);
-			ToneChallengeRegistry tcr = new ToneChallengeRegistry(jpr, new SimpleMorseCodeProvider());
-			context.setAttribute(EMF, emf);
-			context.setAttribute(PERSISTENCE, jpr);
-			context.setAttribute(CHALLENGES, tcr);
-		} catch (Exception ex) {
-			logger.severe("Couldn’t create bookstore database bean: " + ex.getMessage());
-		}
+		JPAPersistenceRegistry jpr = new JPAPersistenceRegistry(emf);
+		ToneChallengeRegistry tcr = new ToneChallengeRegistry(jpr, new SimpleMorseCodeProvider());
+		context.setAttribute(EMF, emf);
+		context.setAttribute(PERSISTENCE, jpr);
+		context.setAttribute(CHALLENGES, tcr);
 	}
 
 }

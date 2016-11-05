@@ -1,11 +1,11 @@
 package de.hsrm.hktn.morsecodetrainer.api.morse;
 
 import java.util.UUID;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
@@ -14,7 +14,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.SecurityContext;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
@@ -49,8 +48,8 @@ public class GameTone {
 			ToneChallengeRegistry reg = (ToneChallengeRegistry) context.getAttribute(ContextListener.CHALLENGES);
 			return new Acknowledgement(reg.respond(user, UUID.fromString(tr.id), tr.character));
 		} catch (NoSuchUserException | NoSuchChallengeException e) {
-			e.printStackTrace();
-			throw new InternalServerErrorException();
+			logger.log(Level.SEVERE, e.getMessage(), e);
+			throw new InternalServerErrorException(e);
 		}
 
 	}
