@@ -2,11 +2,15 @@ package de.hsrm.hktn.morsecodetrainer.persistence;
 
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 import de.hsrm.hktn.morsecodetrainer.NoSuchChallengeException;
 import de.hsrm.hktn.morsecodetrainer.NoSuchUserException;
 
 public class TransientRegistry implements IPersistence {
+
+	private static final Logger logger = Logger.getLogger(TransientRegistry.class.getName());
+
 	private HashMap<String, HashMap<UUID, String>> registry = new HashMap<>();
 
 	/*
@@ -21,7 +25,7 @@ public class TransientRegistry implements IPersistence {
 		if (!registry.containsKey(user)) {
 			registry.put(user, new HashMap<UUID, String>());
 		}
-		System.out.println("id is " + id);
+		logger.info("id is " + id);
 		registry.get(user).put(id, c);
 	}
 

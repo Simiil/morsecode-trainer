@@ -1,5 +1,7 @@
 package de.hsrm.hktn.morsecodetrainer.api.morse;
 
+import java.util.logging.Logger;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletContext;
@@ -15,20 +17,19 @@ public class ContextListener implements ServletContextListener {
 
 	public static final String CHALLENGES = "challenges";
 	public static final String EMF = "entifymanagerfactory";
-	
 
-	
+	private static final Logger logger = Logger.getLogger(ContextListener.class.getName());
+
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
-		// TODO Auto-generated method stub
-
+		logger.info("context destroyed");
 	}
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		System.out.println("initialize Persistence...");
+		logger.info("initialize Persistence...");
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("bmorsecodetrainer");
-		System.out.println("initialize Persistence "+emf);
+		logger.info("initialize Persistence " + emf);
 		ServletContext context = event.getServletContext();
 		try {
 			JPAPersistenceRegistry jpr = new JPAPersistenceRegistry(emf);
@@ -37,7 +38,7 @@ public class ContextListener implements ServletContextListener {
 			context.setAttribute(PERSISTENCE, jpr);
 			context.setAttribute(CHALLENGES, tcr);
 		} catch (Exception ex) {
-			System.out.println("Couldn’t create bookstore database bean: " + ex.getMessage());
+			logger.severe("Couldn’t create bookstore database bean: " + ex.getMessage());
 		}
 	}
 
